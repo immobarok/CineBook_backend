@@ -1,4 +1,5 @@
 import { Inngest } from "inngest";
+import User from '../models/User.js'
 export const inngest = new Inngest({ id: "cineboook_movie_ticket_booking" });
 
 const syncUserCreation = inngest.createFunction(
