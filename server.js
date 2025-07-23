@@ -5,6 +5,7 @@ import { serve } from "inngest/express";
 import { inngest, functions } from "./inngest/index.js"
 import 'dotenv/config';
 import { connectDB } from './config/database.js';
+import showRouter from './routes/showRoutes.js';
 
 const app = express();
 const port = 4000;
@@ -19,6 +20,8 @@ app.get('/', (req, res) => {
   res.send("Server is running")
 })
 app.use('/api/inngest', serve({ client: inngest, functions }))
+app.use('/api/show',showRouter)
+
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`)
 })
