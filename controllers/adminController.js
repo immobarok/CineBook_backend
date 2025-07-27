@@ -10,7 +10,7 @@ export const getDashboardData = async (req, res) => {
     const bookings = await Booking.find({ isPaid: true });
     const activeShow = await Show.find({ showDateTime: { $gte: new Date() } }).populate('moive');
 
-    const tototalUser = await User.countDocuments();
+    const totalUser = await User.countDocuments();
     const dashboradData = {
       totalBookings: bookings.length,
       totalRevenue: bookings.reduce((acc, booking) => acc + booking.amount, 0),
@@ -34,7 +34,6 @@ export const getAllShows = async (req, res) => {
 }
 
 //api to get all booking
-
 export const getAllBookings = async (req, res) => {
   try {
     const bookings = await Booking.find({}).populate('user').populate({
